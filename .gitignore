@@ -223,4 +223,6 @@ Temporary Items
 *.tmproject
 tmtags
 
+Gemfile.lock
+
 .idea
