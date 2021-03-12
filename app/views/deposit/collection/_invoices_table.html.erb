@@ -1,0 +1,68 @@
+<div class="search">
+
+  <div class="column-block">
+
+    <h1>Invoices</h1>
+
+    <table id="invoices-table" class="table table-condensed mobile-data">
+      <thead>
+      <tr>
+        <th>Number</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Balance</th>
+        <th>Payment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="1" class="dataTables_empty">Loading data from server</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div id="deposit_amount_mismatch" class="text-danger">
+      Warning! Total amount doesn't match deposit.
+    </div>
+  </div>
+
+</div>
+
+<%= javascript_tag do %>
+$(document).ready(function() {
+  var table = $('#invoices-table').DataTable({
+    "dom": "t",
+    "paging": false,
+    "ajax": "<%= account_invoices_path :format => :json %>",
+    "processing": true,
+    "serverSide": true,
+    "search": {"search": $('#account_id').val()},
+    "columnDefs": [
+        {
+          "targets": [ 4 ],
+          "orderable": false
+        }
+      ],
+    createdRow: function(row, data, dataIndex) {
+      $('td', row).eq(4).html('<input class="payment_amount_invoice" type="number" name="payment_amount_' + data[0] + '" id="payment_amount_' + dataIndex + '" step="any" class="form-control">')
+    },
+    drawCallback: function() {
+      $('input').change(function() {
+        var table = $('#invoices-table').DataTable();
+        var total = 0;
+        table.rows().every(function (rowIdx, tableLoop, rowLoop) {
+          var d = this.data();
+          total += parseFloat($('#payment_amount_' + rowIdx).val(), 10);
+        });
+        if (total != parseFloat($('#payment_amount').val(), 10)) {
+          $('#deposit_amount_mismatch').css('visibility', 'visible');
+          $('#submit-btn').prop('disabled', true);
+        } else {
+          $('#deposit_amount_mismatch').css('visibility', 'hidden');
+          $('#submit-btn').prop('disabled', false);
+        }
+      });
+    }
+  });
+});
+<% end %>

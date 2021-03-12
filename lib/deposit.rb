@@ -5,6 +5,8 @@ module Deposit
   mattr_accessor :current_tenant_user
   mattr_accessor :layout
 
+  mattr_accessor :deposit_types
+
   self.current_tenant_user = lambda { |session, user|
     {:username => 'admin',
      :password => 'password',
@@ -19,4 +21,9 @@ module Deposit
     }
   end
 
+  # Default deposit types
+  self.deposit_types = ['Wire',
+                        'Check',
+                        'Cash',
+                        'OTHER']
 end

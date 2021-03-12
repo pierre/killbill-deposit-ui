@@ -4,3 +4,13 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_tree .
 */
+
+.payment_amount_invoice {
+    width: 100%;
+}
+
+#deposit_amount_mismatch {
+    text-align: right;
+    padding-top: 15px;
+    visibility: hidden;
+}

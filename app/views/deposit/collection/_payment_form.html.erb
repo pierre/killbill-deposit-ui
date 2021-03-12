@@ -1,0 +1,53 @@
+<%= form_tag do_record_payment_path, :class => 'form-horizontal' do %>
+  <div class="form-group">
+    <%= label_tag :account_id, 'Account ID', :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-5">
+      <%= text_field_tag :account_id, @account_id, :class => 'form-control', :readonly => !@account_id.nil?, :required => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :payment_amount, 'Amount Received', :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= number_field_tag :payment_amount, nil, :step => :any, :id => 'payment_amount', :class => 'form-control', :required => true %>
+      <p class="help-block">Currency: <%= @currency %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :effective_date, 'Payment Date', :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= text_field_tag :effective_date, Date.parse(Time.now.to_s).to_s, :class => 'form-control date-picker', :required => true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :payment_reference_number, 'Payment Ref. #', :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= text_field_tag :payment_reference_number, nil, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :deposit_type, 'Payment Mode', :class => 'col-sm-2 control-label' %>
+    <div class="col-sm-3">
+      <%= select_tag :deposit_type, options_for_select(Deposit.deposit_types), :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div id="invoices">
+    <% unless @account_id.nil? %>
+      <%= render(:partial => 'invoices_table') %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= submit_tag 'Save', :id => 'submit-btn', :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+    $('#account_id').change(function() {
+      $("#invoices").html("<%= j render(:partial => 'invoices_table') %>");
+    });
+  });
+<% end %>
