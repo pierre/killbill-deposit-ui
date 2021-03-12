@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'twitter-bootstrap-rails'
   s.add_dependency 'font-awesome-rails', '~> 4.7'
   s.add_dependency 'killbill-client', '~> 3.2'
+  s.add_dependency 'sass-rails', '~> 5.0'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'simplecov'
