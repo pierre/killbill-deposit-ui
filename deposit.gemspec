@@ -31,6 +31,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'json', '>= 1.8.6'
   s.add_development_dependency 'listen'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rubocop', '~> 0.88.0'
+  s.add_development_dependency 'rubocop', '~> 0.88.0' if RUBY_VERSION >= '2.4'
   s.add_development_dependency 'simplecov'
 end
