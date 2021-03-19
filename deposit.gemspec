@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   # See https://github.com/seyhunak/twitter-bootstrap-rails/issues/897
   s.add_dependency 'font-awesome-rails', '~> 4.7'
   s.add_dependency 'killbill-client', '~> 3.2'
+  s.add_dependency 'money-rails', '~> 1.9'
   s.add_dependency 'sass-rails', '~> 5.0'
   s.add_dependency 'twitter-bootstrap-rails'
 
