@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails', '~> 5.0'
   s.add_dependency 'twitter-bootstrap-rails'
 
+  s.add_development_dependency 'gem-release', '~> 2.2'
   s.add_development_dependency 'json', '>= 1.8.6'
   s.add_development_dependency 'listen'
   s.add_development_dependency 'rake'
