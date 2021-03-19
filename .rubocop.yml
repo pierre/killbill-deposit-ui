@@ -19,8 +19,9 @@ Layout/EmptyLinesAroundAttributeAccessor:
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
+# Alternative?
 Gemspec/RubyVersionGlobalsUsage:
-  Enabled: true
+  Enabled: false
 
 Layout/DefEndAlignment:
   AutoCorrect: true
