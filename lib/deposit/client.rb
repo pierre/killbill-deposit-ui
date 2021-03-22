@@ -33,7 +33,7 @@ module Killbill
         end
 
         def deposit_plugin_available?(options = nil)
-          path = KILLBILL_DEPOSIT_PREFIX
+          path = KILLBILL_DEPOSIT_PREFIX + '/healthcheck'
           KillBillClient::API.get path, nil, options
 
           [true, nil]
