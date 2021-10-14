@@ -9,8 +9,8 @@ module Deposit
   mattr_accessor :deposit_types
 
   self.current_tenant_user = lambda { |_session, _user|
-    { username: 'admin',
-      password: 'password',
+    { username: KillBillClient.username || 'admin',
+      password: KillBillClient.password || 'password',
       session_id: nil,
       api_key: KillBillClient.api_key,
       api_secret: KillBillClient.api_secret }
