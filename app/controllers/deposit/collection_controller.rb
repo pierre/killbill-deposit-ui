@@ -59,8 +59,8 @@ module Deposit
         account = begin
           KillBillClient::Model::Account.find_by_id(search_key, false, false,
                                                     cached_options_for_klient)
-                  rescue StandardError
-                    nil
+        rescue StandardError
+          nil
         end
         if account.nil?
           []
