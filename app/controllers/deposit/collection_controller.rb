@@ -59,8 +59,8 @@ module Deposit
         account = begin
           KillBillClient::Model::Account.find_by_id(search_key, false, false,
                                                     cached_options_for_klient)
-                  rescue StandardError
-                    nil
+        rescue StandardError
+          nil
         end
         if account.nil?
           []
@@ -121,7 +121,7 @@ module Deposit
           sort.nil? ? -1 : sort
         end
       end
-      pages.reverse! if ordering_dir == 'desc' && limit >= 0 || ordering_dir == 'asc' && limit.negative?
+      pages.reverse! if (ordering_dir == 'desc' && limit >= 0) || (ordering_dir == 'asc' && limit.negative?)
 
       pages.each { |page| json[:data] << formatter.call(page) }
 
