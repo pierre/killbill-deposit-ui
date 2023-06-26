@@ -11,8 +11,9 @@ Kill Bill compatibility
 
 | Deposit UI version | Kill Bill version |
 |-------------------:|------------------:|
-|              0.0.y |            0.22.z |
-|              1.0.y |            0.24.z |
+|              0.0.y |            0.22.z (Rails 5) |
+|              0.1.y |            0.24.z (Rails 6) |
+|              1.0.y |            0.24.z (Rails 7) |
 
 Functionality
 -------------
