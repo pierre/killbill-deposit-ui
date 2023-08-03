@@ -11,8 +11,9 @@ class NavigationTest < ActionDispatch::IntegrationTest
   end
 
   test 'test_payment_amount_field_behavior' do
-    # Create mock invoices and mock payments
-    mock_invoices = [Invoice.new(balance: 0), Invoice.new(balance: 10)]
+    # Simulate AJAX call to account_invoices route
+    get account_invoices_path, xhr: true
+    mock_invoices = JSON.parse(@response.body)
     mock_payments = [Payment.new(amount: 0), Payment.new(amount: 10)]
 
     # Simulate a GET request to the deposit page
