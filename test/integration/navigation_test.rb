@@ -9,5 +9,4 @@ class NavigationTest < ActionDispatch::IntegrationTest
     get '/deposit'
     assert_response :success
   end
-
 end
