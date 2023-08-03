@@ -44,7 +44,8 @@ $(document).ready(function() {
         }
       ],
     createdRow: function(row, data, dataIndex) {
-      $('td', row).eq(4).html('<input class="payment_amount_invoice" type="number" name="payment_amount_' + data[0] + '" id="payment_amount_' + dataIndex + '" step="any" class="form-control">')
+      var disabled = data[3].replace(/\D/g, '') == 0 ? ' disabled' : '';
+      $('td', row).eq(4).html('<input class="payment_amount_invoice" type="number" name="payment_amount_' + data[0] + '" id="payment_amount_' + dataIndex + '" value="0" step="any" class="form-control"' + disabled + '>')
     },
     drawCallback: function() {
       $('input').change(function() {
